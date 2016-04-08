@@ -233,7 +233,7 @@ function gn_av_the_heading() {
  */
 function gn_av_get_the_heading() {
 
-	return sprintf( apply_filters( 'gn_av_heading', get_option( '_gn_av_heading', __( 'You must be %s years old to visit this site.', 'gn-age-verify' ) ) ), av_get_minimum_age() );
+	return sprintf( apply_filters( 'gn_av_heading', get_option( '_gn_av_heading', __( 'You must be %s years old to visit this site.', 'gn-age-verify' ) ) ), gn_av_get_minimum_age() );
 }
 
 /**
@@ -422,7 +422,7 @@ function gn_av_get_verify_form() {
 
 			$form .= '<p><label for="av_verify_confirm"><input type="checkbox" name="av_verify_confirm" id="av_verify_confirm" value="1" /> ';
 
-			$form .= esc_html( sprintf( apply_filters( 'gn_av_confirm_text', __( 'I am at least %s years old', 'gn-age-verify' ) ), av_get_minimum_age() ) ) . '</label></p>';
+			$form .= esc_html( sprintf( apply_filters( 'gn_av_confirm_text', __( 'I am at least %s years old', 'gn-age-verify' ) ), gn_av_get_minimum_age() ) ) . '</label></p>';
 
 			break;
 
@@ -472,7 +472,7 @@ function gn_av_register_form() {
 
 	$text = '<p class="gn-age-verify"><label for="_gn_av_confirm_age"><input type="checkbox" name="_gn_av_confirm_age" id="_gn_av_confirm_age" value="1" /> ';
 
-	$text .= esc_html( sprintf( apply_filters( 'gn_av_registration_text', __( 'I am at least %s years old', 'gn-age-verify' ) ), av_get_minimum_age() ) );
+	$text .= esc_html( sprintf( apply_filters( 'gn_av_registration_text', __( 'I am at least %s years old', 'gn-age-verify' ) ), gn_av_get_minimum_age() ) );
 
 	$text .= '</label></p><br />';
 
