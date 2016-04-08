@@ -182,7 +182,7 @@ function gn_av_needs_verification() {
 	$return = true;
 
 	// If the site is restricted on a per-content basis, let 'em through
-	if ( av_only_content_restricted() ) :
+	if ( gn_av_only_content_restricted() ) :
 
 		$return = false;
 

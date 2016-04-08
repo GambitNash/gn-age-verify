@@ -138,7 +138,7 @@ final class GN_Age_Verify {
 		add_action( 'template_redirect', array( $this, 'verify' ) );
 
 		// If checked in the settings, add to the registration form.
-		if ( av_confirmation_required() ) {
+		if ( gn_av_confirmation_required() ) {
 
 			add_action( 'register_form', 'gn_av_register_form' );
 
@@ -200,11 +200,11 @@ final class GN_Age_Verify {
 		<style type="text/css">
 
 			#av-overlay-wrap {
-				background: #<?php echo esc_attr( av_get_background_color() ); ?>;
+				background: #<?php echo esc_attr( gn_av_get_background_color() ); ?>;
 			}
 
 			#av-overlay {
-				background: #<?php echo esc_attr( av_get_overlay_color() ); ?>;
+				background: #<?php echo esc_attr( gn_av_get_overlay_color() ); ?>;
 			}
 
 		</style>
@@ -238,10 +238,10 @@ final class GN_Age_Verify {
 
 			<div id="av-overlay">
 
-				<h1><?php esc_html_e( av_get_the_heading() ); ?></h1>
+				<h1><?php esc_html_e( gn_av_get_the_heading() ); ?></h1>
 
-				<?php if ( av_get_the_desc() )
-					echo '<p>' . esc_html( av_get_the_desc() ). '</p>'; ?>
+				<?php if ( gn_av_get_the_desc() )
+					echo '<p>' . esc_html( gn_av_get_the_desc() ). '</p>'; ?>
 
 				<?php do_action( 'gn_av_before_form' ); ?>
 
@@ -279,7 +279,7 @@ final class GN_Age_Verify {
 		}
 
 		return sprintf( apply_filters( 'gn_av_restricted_content_message', __( 'You must be %1s years old to view this content.', 'gn-age-verify' ) . ' <a href="%2s">' . __( 'Please verify your age', 'gn-age-verify' ) . '</a>.' ),
-			esc_html( av_get_minimum_age() ),
+			esc_html( gn_av_get_minimum_age() ),
 			esc_url( get_permalink( get_the_ID() ) )
 		);
 	 }
@@ -343,7 +343,7 @@ final class GN_Age_Verify {
 			do_action( 'gn_av_was_verified' );
 
 			if ( isset( $_POST['gn_av_verify_remember'] ) )
-				$cookie_duration = time() +  ( av_get_cookie_duration() * 60 );
+				$cookie_duration = time() +  ( gn_av_get_cookie_duration() * 60 );
 			else
 				$cookie_duration = 0;
 

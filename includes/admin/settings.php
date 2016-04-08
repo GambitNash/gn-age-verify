@@ -223,7 +223,7 @@ function gn_av_settings_callback_overlay_color_field() { ?>
 
 		<?php $default_color = ' data-default-color="#fff"'; ?>
 
-		<input type="text" name="_gn_av_overlay_color" id="_gn_av_overlay_color" value="#<?php echo esc_attr( av_get_overlay_color() ); ?>"<?php echo $default_color ?> />
+		<input type="text" name="_gn_av_overlay_color" id="_gn_av_overlay_color" value="#<?php echo esc_attr( gn_av_get_overlay_color() ); ?>"<?php echo $default_color ?> />
 
 	</fieldset>
 
@@ -247,7 +247,7 @@ function gn_av_settings_callback_bgcolor_field() { ?>
 		if ( current_theme_supports( 'custom-background', 'default-color' ) )
 			$default_color = ' data-default-color="#' . esc_attr( get_theme_support( 'custom-background', 'default-color' ) ) . '"'; ?>
 
-		<input type="text" name="_gn_av_bgcolor" id="_gn_av_bgcolor" value="#<?php echo esc_attr( av_get_background_color() ); ?>"<?php echo $default_color ?> />
+		<input type="text" name="_gn_av_bgcolor" id="_gn_av_bgcolor" value="#<?php echo esc_attr( gn_av_get_background_color() ); ?>"<?php echo $default_color ?> />
 
 	</fieldset>
 
