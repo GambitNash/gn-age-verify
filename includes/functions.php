@@ -34,7 +34,7 @@ function av_minimum_age() {
  */
 function av_get_minimum_age() {
 	
-	$minimum_age = get_option( '_av_minimum_age', 21 );
+	$minimum_age = get_option( '_gn_av_minimum_age', 21 );
 	
 	/**
 	 * Filter the minimum age.
@@ -104,7 +104,7 @@ function av_get_visitor_age( $year, $month, $day ) {
  */
 function av_get_cookie_duration() {
 	
-	$cookie_duration = get_option( '_av_cookie_duration', 720 );
+	$cookie_duration = get_option( '_gn_av_cookie_duration', 720 );
 	
 	/**
 	 * Filter the cookie duration.
@@ -127,7 +127,7 @@ function av_get_cookie_duration() {
  */
 function av_only_content_restricted() {
 	
-	$only_content_restricted = ( 'content' == get_option( '_av_require_for' ) ) ? true : false;
+	$only_content_restricted = ( 'content' == get_option( '_gn_av_require_for' ) ) ? true : false;
 	
 	/**
 	 * Filter whether the restriction is content-specific or site-wide.
@@ -154,7 +154,7 @@ function av_content_is_restricted( $id = null ) {
 		$id = get_the_ID();
 	}
 	
-	$is_restricted = ( 1 == get_post_meta( $id, '_av_needs_verify', true ) ) ? true : false;
+	$is_restricted = ( 1 == get_post_meta( $id, '_gn_av_needs_verify', true ) ) ? true : false;
 	
 	/**
 	 * Filter whether this content should be restricted.
@@ -199,7 +199,7 @@ function av_needs_verification() {
 		$return = false;
 	
 	// If logged in users are exempt, and the visitor is logged in, let 'em through
-	if ( get_option( '_av_always_verify', 'guests' ) == 'guests' && is_user_logged_in() )
+	if ( get_option( '_gn_av_always_verify', 'guests' ) == 'guests' && is_user_logged_in() )
 		$return = false;
 	
 	// Or, if there is a valid cookie let 'em through
@@ -233,7 +233,7 @@ function av_the_heading() {
  */
 function av_get_the_heading() {
 	
-	return sprintf( apply_filters( 'av_heading', get_option( '_av_heading', __( 'You must be %s years old to visit this site.', 'gn-age-verify' ) ) ), av_get_minimum_age() );
+	return sprintf( apply_filters( 'av_heading', get_option( '_gn_av_heading', __( 'You must be %s years old to visit this site.', 'gn-age-verify' ) ) ), av_get_minimum_age() );
 }
 
 /**
@@ -256,7 +256,7 @@ function av_the_desc() {
  */
 function av_get_the_desc() {
 	
-	$desc = apply_filters( 'av_description', get_option( '_av_description', __( 'Please verify your age', 'gn-age-verify' ) ) );
+	$desc = apply_filters( 'av_description', get_option( '_gn_av_description', __( 'Please verify your age', 'gn-age-verify' ) ) );
 	
 	if ( ! empty( $desc ) )
 		return $desc;
@@ -273,7 +273,7 @@ function av_get_the_desc() {
  */
 function av_get_input_type() {
 	
-	return apply_filters( 'av_input_type', get_option( '_av_input_type', 'dropdowns' ) );
+	return apply_filters( 'av_input_type', get_option( '_gn_av_input_type', 'dropdowns' ) );
 }
 
 /**
@@ -285,8 +285,8 @@ function av_get_input_type() {
  */
 function av_get_overlay_color() {
 	
-	if ( get_option( '_av_overlay_color' ) )
-		$color = get_option( '_av_overlay_color' );
+	if ( get_option( '_gn_av_overlay_color' ) )
+		$color = get_option( '_gn_av_overlay_color' );
 	else
 		$color = 'fff';
 	
@@ -307,8 +307,8 @@ function av_get_background_color() {
 	else
 		$default = 'e6e6e6';
 	
-	if ( get_option( '_av_bgcolor' ) )
-		$color = get_option( '_av_bgcolor' );
+	if ( get_option( '_gn_av_bgcolor' ) )
+		$color = get_option( '_gn_av_bgcolor' );
 	else
 		$color = $default;
 	
@@ -453,7 +453,7 @@ function av_get_verify_form() {
  */
 function av_confirmation_required() {
 	
-	if ( get_option( '_av_membership', 1 ) == 1 )
+	if ( get_option( '_gn_av_membership', 1 ) == 1 )
 		$return = true;
 	else
 		$return = false;
@@ -470,7 +470,7 @@ function av_confirmation_required() {
  */
 function av_register_form() {
 	
-	$text = '<p class="gn-age-verify"><label for="_av_confirm_age"><input type="checkbox" name="_av_confirm_age" id="_av_confirm_age" value="1" /> ';
+	$text = '<p class="gn-age-verify"><label for="_gn_av_confirm_age"><input type="checkbox" name="_gn_av_confirm_age" id="_gn_av_confirm_age" value="1" /> ';
 	
 	$text .= esc_html( sprintf( apply_filters( 'av_registration_text', __( 'I am at least %s years old', 'gn-age-verify' ) ), av_get_minimum_age() ) );
 	
@@ -488,6 +488,6 @@ function av_register_form() {
  */
 function av_register_check( $login, $email, $errors ) {
 	
-	if ( ! isset( $_POST['_av_confirm_age'] ) )
+	if ( ! isset( $_POST['_gn_av_confirm_age'] ) )
 		$errors->add( 'empty_age_confirm', '<strong>ERROR</strong>: ' . apply_filters( 'av_registration_error', __( 'Please confirm your age', 'gn-age-verify' ) ) );
 }

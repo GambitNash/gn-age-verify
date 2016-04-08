@@ -1,10 +1,10 @@
 (function($) {
 
 	$(document).ready(function() {
-		
-		$( '#_av_overlay_color' ).wpColorPicker();
-		
-		$( '#_av_bgcolor' ).wpColorPicker();
+
+		$( '#_gn_av_overlay_color' ).wpColorPicker();
+
+		$( '#_gn_av_bgcolor' ).wpColorPicker();
 	});
 
 })(jQuery);

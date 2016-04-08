@@ -21,7 +21,7 @@
  * Author URI:  http://chasewiseman.com
  * Version:     0.3.1
  * License:     GPL3
- * Text Domain: gn-gn-age-verify
+ * Text Domain: gn-age-verify
  * Domain Path: /languages
  */
 
@@ -33,7 +33,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * The main class definition.
  */
-require( plugin_dir_path( __FILE__ ) . 'includes/class-gn-gn-age-verify.php' );
+require( plugin_dir_path( __FILE__ ) . 'includes/class-gn-age-verify.php' );
 
 // Get the plugin running.
 add_action( 'plugins_loaded', array( 'GN_Age_Verify', 'get_instance' ) );

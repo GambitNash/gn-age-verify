@@ -120,7 +120,7 @@ final class GN_Age_Verify {
 		add_action( 'init', array( $this, 'load_textdomain' ) );
 
 		// If checked in the settings, load the default and custom styles.
-		if ( get_option( '_av_styling', 1 ) == 1 ) {
+		if ( get_option( '_gn_av_styling', 1 ) == 1 ) {
 
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 
