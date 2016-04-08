@@ -341,11 +341,11 @@ function gn_av_get_verify_form() {
 
 	$form = '';
 
-	$form .= '<form id="av_verify_form" action="' . esc_url( home_url( '/' ) ) . '" method="post">';
+	$form .= '<form id="gn_av_verify_form" action="' . esc_url( home_url( '/' ) ) . '" method="post">';
 
 
 	/* Parse the errors, if any */
-	$error = ( isset( $_GET['verify-error'] ) ) ? $_GET['verify-error'] : false;
+	$error = ( isset( $_GET['gn-verify-error'] ) ) ? $_GET['gn-verify-error'] : false;
 
 	if ( $error ) :
 
@@ -371,14 +371,14 @@ function gn_av_get_verify_form() {
 	do_action( 'gn_av_form_before_inputs' );
 
 	// Add a sweet nonce. So sweet.
-	$form .= wp_nonce_field( 'verify-age', 'av-nonce' );
+	$form .= wp_nonce_field( 'gn-verify-age', 'av-nonce' );
 
 	switch ( $input_type ) {
 
 		// If set to date dropdowns
 		case 'dropdowns' :
 
-			$form .= '<p><select name="av_verify_m" id="av_verify_m">';
+			$form .= '<p><select name="gn_av_verify_m" id="gn_av_verify_m">';
 
 				foreach ( range( 1, 12 ) as $month ) :
 
@@ -388,7 +388,7 @@ function gn_av_get_verify_form() {
 
 				endforeach;
 
-			$form .= '</select> - <select name="av_verify_d" id="av_verify_d">';
+			$form .= '</select> - <select name="gn_av_verify_d" id="gn_av_verify_d">';
 
 				foreach ( range( 1, 31 ) as $day ) :
 
@@ -396,7 +396,7 @@ function gn_av_get_verify_form() {
 
 				endforeach;
 
-			$form .= '</select> - <select name="av_verify_y" id="av_verify_y">';
+			$form .= '</select> - <select name="gn_av_verify_y" id="gn_av_verify_y">';
 
 				foreach ( range( 1910, date( 'Y' ) ) as $year ) :
 
@@ -413,14 +413,14 @@ function gn_av_get_verify_form() {
 		// If set to date inputs
 		case 'inputs' :
 
-			$form .= '<p><input type="text" name="av_verify_m" id="av_verify_m" maxlength="2" value="" placeholder="MM" /> - <input type="text" name="av_verify_d" id="av_verify_d" maxlength="2" value="" placeholder="DD" /> - <input type="text" name="av_verify_y" id="av_verify_y" maxlength="4" value="" placeholder="YYYY" /></p>';
+			$form .= '<p><input type="text" name="gn_av_verify_m" id="gn_av_verify_m" maxlength="2" value="" placeholder="MM" /> - <input type="text" name="gn_av_verify_d" id="gn_av_verify_d" maxlength="2" value="" placeholder="DD" /> - <input type="text" name="gn_av_verify_y" id="gn_av_verify_y" maxlength="4" value="" placeholder="YYYY" /></p>';
 
 			break;
 
 		// If just a simple checkbox
 		case 'checkbox' :
 
-			$form .= '<p><label for="av_verify_confirm"><input type="checkbox" name="av_verify_confirm" id="av_verify_confirm" value="1" /> ';
+			$form .= '<p><label for="gn_av_verify_confirm"><input type="checkbox" name="gn_av_verify_confirm" id="gn_av_verify_confirm" value="1" /> ';
 
 			$form .= esc_html( sprintf( apply_filters( 'gn_av_confirm_text', __( 'I am at least %s years old', 'gn-age-verify' ) ), gn_av_get_minimum_age() ) ) . '</label></p>';
 
@@ -430,9 +430,9 @@ function gn_av_get_verify_form() {
 
 	do_action( 'gn_av_form_after_inputs' );
 
-	$form .= '<p class="submit"><label for="av_verify_remember"><input type="checkbox" name="av_verify_remember" id="av_verify_remember" value="1" /> ' . esc_html__( 'Remember me', 'gn-age-verify' ) . '</label> ';
+	$form .= '<p class="submit"><label for="gn_av_verify_remember"><input type="checkbox" name="gn_av_verify_remember" id="gn_av_verify_remember" value="1" /> ' . esc_html__( 'Remember me', 'gn-age-verify' ) . '</label> ';
 
-	$form .= '<input type="submit" name="av_verify" id="av_verify" value="' . esc_attr( $submit_button_label ) . '" /></p>';
+	$form .= '<input type="submit" name="gn_av_verify" id="gn_av_verify" value="' . esc_attr( $submit_button_label ) . '" /></p>';
 
 	$form .= '</form>';
 
