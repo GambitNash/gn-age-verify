@@ -193,9 +193,9 @@ function gn_av_needs_verification() {
 	endif;
 
 	// Check that the form was at least submitted. This lets visitors through that have cookies disabled.
-	$nonce = ( isset( $_REQUEST['age-verified'] ) ) ? $_REQUEST['age-verified'] : '';
+	$nonce = ( isset( $_REQUEST['gn-age-verified'] ) ) ? $_REQUEST['gn-age-verified'] : '';
 
-	if ( wp_verify_nonce( $nonce, 'age-verified' ) )
+	if ( wp_verify_nonce( $nonce, 'gn-age-verified' ) )
 		$return = false;
 
 	// If logged in users are exempt, and the visitor is logged in, let 'em through
@@ -203,7 +203,7 @@ function gn_av_needs_verification() {
 		$return = false;
 
 	// Or, if there is a valid cookie let 'em through
-	if ( isset( $_COOKIE['age-verified'] ) )
+	if ( isset( $_COOKIE['gn-age-verified'] ) )
 		$return = false;
 
 	return (bool) apply_filters( 'gn_av_needs_verification', $return );
@@ -371,7 +371,7 @@ function gn_av_get_verify_form() {
 	do_action( 'gn_av_form_before_inputs' );
 
 	// Add a sweet nonce. So sweet.
-	$form .= wp_nonce_field( 'gn-verify-age', 'av-nonce' );
+	$form .= wp_nonce_field( 'gn-verify-age', 'gn-av-nonce' );
 
 	switch ( $input_type ) {
 
