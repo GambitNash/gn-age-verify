@@ -335,7 +335,7 @@ function gn_av_verify_form() {
  */
 function gn_av_get_verify_form() {
 
-	$input_type = av_get_input_type();
+	$input_type = gn_av_get_input_type();
 
 	$submit_button_label = apply_filters( 'gn_av_form_submit_label', __( 'Enter Site &raquo;', 'gn-age-verify' ) );
 

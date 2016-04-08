@@ -1,16 +1,16 @@
-#av-overlay-wrap { 
-	position: fixed; 
+#gn-av-overlay-wrap {
+	position: fixed;
 	height: 100%;
 	width: 100%;
 	background: #E6E6E6;
 	z-index: 10000;
 	display: block;
 	top: 0;
-	left: 0; 
+	left: 0;
 }
 
-#av-overlay {
-	position: fixed; 
+#gn-av-overlay {
+	position: fixed;
 	top: 0;
 	left: 0;
 	height: 100%;
@@ -22,25 +22,25 @@
 	   -moz-box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
 	        box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
 }
-#av-overlay h1 {
+#gn-av-overlay h1 {
 	margin-bottom: 20px;
 }
-#av-overlay p {
+#gn-av-overlay p {
 	margin-bottom: 10px;
 }
-#av-overlay .submit {
+#gn-av-overlay .submit {
 	margin-bottom: 0;
 }
 
-#av-overlay input[type=text] {
+#gn-av-overlay input[type=text] {
 	width: 50px;
 	outline: none;
 }
-#av-overlay #av_verify_y {
+#gn-av-overlay #av_verify_y {
 	width: 70px;
 }
 
-#av-overlay .error {
+#gn-av-overlay .error {
 	padding: 12px;
 	background-color: #ffebe8;
 	border: 1px solid #c00;
@@ -51,8 +51,8 @@
 
 /* Minimum width of 400 pixels. */
 @media screen and (min-width: 400px) {
-	
-	#av-overlay {
+
+	#gn-av-overlay {
 		position: relative;
 		top: auto;
 		left: auto;
@@ -60,5 +60,5 @@
 		height: auto;
 		margin: 100px auto 0 auto;
 	}
-	
+
 }

@@ -185,7 +185,7 @@ final class GN_Age_Verify {
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style( 'av-styles', plugin_dir_url( __FILE__ ) . 'assets/styles.css' );
+		wp_enqueue_style( 'gn-av-styles', plugin_dir_url( __FILE__ ) . 'assets/styles.css' );
 	}
 
 	/**
@@ -199,11 +199,11 @@ final class GN_Age_Verify {
 
 		<style type="text/css">
 
-			#av-overlay-wrap {
+			#gn-av-overlay-wrap {
 				background: #<?php echo esc_attr( gn_av_get_background_color() ); ?>;
 			}
 
-			#av-overlay {
+			#gn-av-overlay {
 				background: #<?php echo esc_attr( gn_av_get_overlay_color() ); ?>;
 			}
 
@@ -225,18 +225,18 @@ final class GN_Age_Verify {
 	 */
 	public function verify_overlay() {
 
-		if ( ! av_needs_verification() ) {
+		if ( ! gn_av_needs_verification() ) {
 			return;
 		}
 
 		// Disable page caching by W3 Total Cache.
 		define( 'DONOTCACHEPAGE', true ); ?>
 
-		<div id="av-overlay-wrap">
+		<div id="gn-av-overlay-wrap">
 
 			<?php do_action( 'gn_av_before_modal' ); ?>
 
-			<div id="av-overlay">
+			<div id="gn-av-overlay">
 
 				<h1><?php esc_html_e( gn_av_get_the_heading() ); ?></h1>
 
@@ -245,7 +245,7 @@ final class GN_Age_Verify {
 
 				<?php do_action( 'gn_av_before_form' ); ?>
 
-				<?php av_verify_form(); ?>
+				<?php gn_av_verify_form(); ?>
 
 				<?php do_action( 'gn_av_after_form' ); ?>
 
@@ -293,16 +293,16 @@ final class GN_Age_Verify {
 	 */
 	public function verify() {
 
-		if ( ! isset( $_POST['av-nonce'] ) || ! wp_verify_nonce( $_POST['av-nonce'], 'verify-age' ) )
+		if ( ! isset( $_POST['gn-av-nonce'] ) || ! wp_verify_nonce( $_POST['gn-av-nonce'], 'gn-verify-age' ) )
 			return;
 
-		$redirect_url = remove_query_arg( array( 'age-verified', 'verify-error' ), wp_get_referer() );
+		$redirect_url = remove_query_arg( array( 'gn-age-verified', 'gn-verify-error' ), wp_get_referer() );
 
 		$is_verified  = false;
 
 		$error = 1; // Catch-all in case something goes wrong
 
-		$input_type   = av_get_input_type();
+		$input_type   = gn_av_get_input_type();
 
 		switch ( $input_type ) {
 
@@ -320,9 +320,9 @@ final class GN_Age_Verify {
 
 				if ( checkdate( (int) $_POST['gn_av_verify_m'], (int) $_POST['gn_av_verify_d'], (int) $_POST['gn_av_verify_y'] ) ) :
 
-					$age = av_get_visitor_age( $_POST['gn_av_verify_y'], $_POST['gn_av_verify_m'], $_POST['gn_av_verify_d'] );
+					$age = gn_av_get_visitor_age( $_POST['gn_av_verify_y'], $_POST['gn_av_verify_m'], $_POST['gn_av_verify_d'] );
 
-				    if ( $age >= av_get_minimum_age() )
+				    if ( $age >= gn_av_get_minimum_age() )
 						$is_verified = true;
 					else
 						$error = 3; // Not old enough
@@ -347,16 +347,16 @@ final class GN_Age_Verify {
 			else
 				$cookie_duration = 0;
 
-			setcookie( 'age-verified', 1, $cookie_duration, COOKIEPATH, COOKIE_DOMAIN, false );
+			setcookie( 'gn-age-verified', 1, $cookie_duration, COOKIEPATH, COOKIE_DOMAIN, false );
 
-			wp_redirect( esc_url_raw( $redirect_url ) . '?age-verified=' . wp_create_nonce( 'age-verified' ) );
+			wp_redirect( esc_url_raw( $redirect_url ) . '?gn-age-verified=' . wp_create_nonce( 'gn-age-verified' ) );
 			exit;
 
 		else :
 
 			do_action( 'gn_av_was_not_verified' );
 
-			wp_redirect( esc_url_raw( add_query_arg( 'verify-error', $error, $redirect_url ) ) );
+			wp_redirect( esc_url_raw( add_query_arg( 'gn-verify-error', $error, $redirect_url ) ) );
 			exit;
 
 		endif;
