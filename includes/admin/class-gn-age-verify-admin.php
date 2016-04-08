@@ -113,11 +113,11 @@ final class GN_Age_Verify_Admin {
 	public function add_settings_page() {
 
 		add_options_page (
-			__( 'Age Verify', 'gn-age-verify' ),
-			__( 'Age Verify', 'gn-age-verify' ),
+			__( 'GN Age Verify', 'gn-age-verify' ),
+			__( 'GN Age Verify', 'gn-age-verify' ),
 			'manage_options',
 			'gn-age-verify',
-			'av_settings_page'
+			'gn_av_settings_page'
 		);
 	}
 
@@ -131,55 +131,55 @@ final class GN_Age_Verify_Admin {
 	public function register_settings() {
 
 		/* General Section */
-		add_settings_section( 'av_settings_general', null, 'av_settings_callback_section_general', 'gn-age-verify' );
+		add_settings_section( 'gn_av_settings_general', null, 'gn_av_settings_callback_section_general', 'gn-age-verify' );
 
 	 	// What to protect (entire site or specific content)
-		add_settings_field( '_gn_av_require_for', __( 'Require verification for', 'gn-age-verify' ), 'av_settings_callback_require_for_field', 'gn-age-verify', 'av_settings_general' );
+		add_settings_field( '_gn_av_require_for', __( 'Require verification for', 'gn-age-verify' ), 'gn_av_settings_callback_require_for_field', 'gn-age-verify', 'gn_av_settings_general' );
 	 	register_setting  ( 'gn-age-verify', '_gn_av_require_for', 'esc_attr' );
 
 	 	// Who to verify (logged in or all)
-		add_settings_field( '_gn_av_always_verify', __( 'Verify the age of', 'gn-age-verify' ), 'av_settings_callback_always_verify_field', 'gn-age-verify', 'av_settings_general' );
+		add_settings_field( '_gn_av_always_verify', __( 'Verify the age of', 'gn-age-verify' ), 'gn_av_settings_callback_always_verify_field', 'gn-age-verify', 'gn_av_settings_general' );
 	 	register_setting  ( 'gn-age-verify', '_gn_av_always_verify', 'esc_attr' );
 
 	 	// Minimum Age
-		add_settings_field( '_gn_av_minimum_age', '<label for="_gn_av_minimum_age">' . __( 'Visitors must be', 'gn-age-verify' ) . '</label>', 'av_settings_callback_minimum_age_field', 'gn-age-verify', 'av_settings_general' );
+		add_settings_field( '_gn_av_minimum_age', '<label for="_gn_av_minimum_age">' . __( 'Visitors must be', 'gn-age-verify' ) . '</label>', 'gn_av_settings_callback_minimum_age_field', 'gn-age-verify', 'gn_av_settings_general' );
 	 	register_setting  ( 'gn-age-verify', '_gn_av_minimum_age', 'intval' );
 
 	 	// Memory Length
-	 	add_settings_field( '_gn_av_cookie_duration', '<label for="_gn_av_cookie_duration">' . __( 'Remember visitors for', 'gn-age-verify' ) . '</label>', 'av_settings_callback_cookie_duration_field', 'gn-age-verify', 'av_settings_general' );
+	 	add_settings_field( '_gn_av_cookie_duration', '<label for="_gn_av_cookie_duration">' . __( 'Remember visitors for', 'gn-age-verify' ) . '</label>', 'gn_av_settings_callback_cookie_duration_field', 'gn-age-verify', 'gn_av_settings_general' );
 	 	register_setting  ( 'gn-age-verify', '_gn_av_cookie_duration', 'intval' );
 
-	 	add_settings_field( '_gn_av_membership', __( 'Membership', 'gn-age-verify' ), 'av_settings_callback_membership_field', 'gn-age-verify', 'av_settings_general' );
+	 	add_settings_field( '_gn_av_membership', __( 'Membership', 'gn-age-verify' ), 'gn_av_settings_callback_membership_field', 'gn-age-verify', 'gn_av_settings_general' );
 	 	register_setting  ( 'gn-age-verify', '_gn_av_membership', 'intval' );
 
 	 	/* Display Section */
-	 	add_settings_section( 'av_settings_display', __( 'Display Options', 'gn-age-verify' ), 'av_settings_callback_section_display', 'gn-age-verify' );
+	 	add_settings_section( 'gn_av_settings_display', __( 'Display Options', 'gn-age-verify' ), 'gn_av_settings_callback_section_display', 'gn-age-verify' );
 
 	 	// Heading
-	 	add_settings_field( '_gn_av_heading', '<label for="_gn_av_heading">' . __( 'Overlay Heading', 'gn-age-verify' ) . '</label>', 'av_settings_callback_heading_field', 'gn-age-verify', 'av_settings_display' );
+	 	add_settings_field( '_gn_av_heading', '<label for="_gn_av_heading">' . __( 'Overlay Heading', 'gn-age-verify' ) . '</label>', 'gn_av_settings_callback_heading_field', 'gn-age-verify', 'gn_av_settings_display' );
 	 	register_setting  ( 'gn-age-verify', '_gn_av_heading', 'esc_attr' );
 
 	 	// Description
-	 	add_settings_field( '_gn_av_description', '<label for="_gn_av_description">' . __( 'Overlay Description', 'gn-age-verify' ) . '</label>', 'av_settings_callback_description_field', 'gn-age-verify', 'av_settings_display' );
+	 	add_settings_field( '_gn_av_description', '<label for="_gn_av_description">' . __( 'Overlay Description', 'gn-age-verify' ) . '</label>', 'gn_av_settings_callback_description_field', 'gn-age-verify', 'gn_av_settings_display' );
 	 	register_setting  ( 'gn-age-verify', '_gn_av_description', 'esc_attr' );
 
 	 	// Input Type
-	 	add_settings_field( '_gn_av_input_type', '<label for="_gn_av_input_type">' . __( 'Verify ages using', 'gn-age-verify' ) . '</label>', 'av_settings_callback_input_type_field', 'gn-age-verify', 'av_settings_display' );
+	 	add_settings_field( '_gn_av_input_type', '<label for="_gn_av_input_type">' . __( 'Verify ages using', 'gn-age-verify' ) . '</label>', 'gn_av_settings_callback_input_type_field', 'gn-age-verify', 'gn_av_settings_display' );
 	 	register_setting  ( 'gn-age-verify', '_gn_av_input_type', 'esc_attr' );
 
 	 	// Enable CSS
-	 	add_settings_field( '_gn_av_styling', __( 'Styling', 'gn-age-verify' ), 'av_settings_callback_styling_field', 'gn-age-verify', 'av_settings_display' );
+	 	add_settings_field( '_gn_av_styling', __( 'Styling', 'gn-age-verify' ), 'gn_av_settings_callback_styling_field', 'gn-age-verify', 'gn_av_settings_display' );
 	 	register_setting  ( 'gn-age-verify', '_gn_av_styling', 'intval' );
 
 	 	// Overlay Color
-	 	add_settings_field( '_gn_av_overlay_color', __( 'Overlay Color', 'gn-age-verify' ), 'av_settings_callback_overlay_color_field', 'gn-age-verify', 'av_settings_display' );
+	 	add_settings_field( '_gn_av_overlay_color', __( 'Overlay Color', 'gn-age-verify' ), 'gn_av_settings_callback_overlay_color_field', 'gn-age-verify', 'gn_av_settings_display' );
 	 	register_setting  ( 'gn-age-verify', '_gn_av_overlay_color', array( $this, 'validate_color' ) );
 
 	 	// Background Color
-	 	add_settings_field( '_gn_av_bgcolor', __( 'Background Color', 'gn-age-verify' ), 'av_settings_callback_bgcolor_field', 'gn-age-verify', 'av_settings_display' );
+	 	add_settings_field( '_gn_av_bgcolor', __( 'Background Color', 'gn-age-verify' ), 'gn_av_settings_callback_bgcolor_field', 'gn-age-verify', 'gn_av_settings_display' );
 	 	register_setting  ( 'gn-age-verify', '_gn_av_bgcolor', array( $this, 'validate_color' ) );
 
-		do_action( 'av_register_settings' );
+		do_action( 'gn_av_register_settings' );
 	}
 
 	/**
@@ -239,7 +239,7 @@ final class GN_Age_Verify_Admin {
 
 		wp_enqueue_style( 'wp-color-picker' );
 
-		wp_enqueue_script( 'av-admin-scripts', plugin_dir_url( __FILE__ ) . 'assets/scripts.js', array(
+		wp_enqueue_script( 'gn-av-admin-scripts', plugin_dir_url( __FILE__ ) . 'assets/scripts.js', array(
 			'jquery',
 			'wp-color-picker'
 		) );
@@ -256,7 +256,7 @@ final class GN_Age_Verify_Admin {
 
 		<div class="misc-pub-section verify-age">
 
-			<?php wp_nonce_field( 'av_save_post', 'av_nonce' ); ?>
+			<?php wp_nonce_field( 'gn_av_save_post', 'gn_av_nonce' ); ?>
 
 			<input type="checkbox" name="_gn_av_needs_verify" id="_gn_av_needs_verify" value="1" <?php checked( 1, get_post_meta( get_the_ID(), '_gn_av_needs_verify', true ) ); ?> />
 			<label for="_gn_av_needs_verify" class="selectit">
@@ -281,9 +281,9 @@ final class GN_Age_Verify_Admin {
 			return;
 		}
 
-		$nonce = ( isset( $_POST['av_nonce'] ) ) ? $_POST['av_nonce'] : '';
+		$nonce = ( isset( $_POST['gn_av_nonce'] ) ) ? $_POST['gn_av_nonce'] : '';
 
-		if ( ! wp_verify_nonce( $nonce, 'av_save_post' ) ) {
+		if ( ! wp_verify_nonce( $nonce, 'gn_av_save_post' ) ) {
 			return;
 		}
 

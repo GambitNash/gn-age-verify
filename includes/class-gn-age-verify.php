@@ -24,7 +24,7 @@ final class GN_Age_Verify {
 	 *
 	 * @since 0.2.6
 	 */
-	const VERSION = '0.3.0';
+	const VERSION = '0.3.1';
 
 	/**
 	 * The only instance of this class.
@@ -140,9 +140,9 @@ final class GN_Age_Verify {
 		// If checked in the settings, add to the registration form.
 		if ( av_confirmation_required() ) {
 
-			add_action( 'register_form', 'av_register_form' );
+			add_action( 'register_form', 'gn_av_register_form' );
 
-			add_action( 'register_post', 'av_register_check', 10, 3 );
+			add_action( 'register_post', 'gn_av_register_check', 10, 3 );
 
 		}
 	}
@@ -213,7 +213,7 @@ final class GN_Age_Verify {
 		/**
 		* Trigger action after setting the custom color styles.
 		*/
-		do_action( 'av_custom_styles' );
+		do_action( 'gn_av_custom_styles' );
 	}
 
 	/**
@@ -234,7 +234,7 @@ final class GN_Age_Verify {
 
 		<div id="av-overlay-wrap">
 
-			<?php do_action( 'av_before_modal' ); ?>
+			<?php do_action( 'gn_av_before_modal' ); ?>
 
 			<div id="av-overlay">
 
@@ -243,15 +243,15 @@ final class GN_Age_Verify {
 				<?php if ( av_get_the_desc() )
 					echo '<p>' . esc_html( av_get_the_desc() ). '</p>'; ?>
 
-				<?php do_action( 'av_before_form' ); ?>
+				<?php do_action( 'gn_av_before_form' ); ?>
 
 				<?php av_verify_form(); ?>
 
-				<?php do_action( 'av_after_form' ); ?>
+				<?php do_action( 'gn_av_after_form' ); ?>
 
 			</div>
 
-			<?php do_action( 'av_after_modal' ); ?>
+			<?php do_action( 'gn_av_after_modal' ); ?>
 
 		</div>
 	<?php }
@@ -278,7 +278,7 @@ final class GN_Age_Verify {
 			return $content;
 		}
 
-		return sprintf( apply_filters( 'av_restricted_content_message', __( 'You must be %1s years old to view this content.', 'gn-age-verify' ) . ' <a href="%2s">' . __( 'Please verify your age', 'gn-age-verify' ) . '</a>.' ),
+		return sprintf( apply_filters( 'gn_av_restricted_content_message', __( 'You must be %1s years old to view this content.', 'gn-age-verify' ) . ' <a href="%2s">' . __( 'Please verify your age', 'gn-age-verify' ) . '</a>.' ),
 			esc_html( av_get_minimum_age() ),
 			esc_url( get_permalink( get_the_ID() ) )
 		);
@@ -309,7 +309,7 @@ final class GN_Age_Verify {
 
 			case 'checkbox' :
 
-				if ( isset( $_POST['av_verify_confirm'] ) && (int) $_POST['av_verify_confirm'] == 1 )
+				if ( isset( $_POST['gn_av_verify_confirm'] ) && (int) $_POST['gn_av_verify_confirm'] == 1 )
 					$is_verified = true;
 				else
 					$error = 2; // Didn't check the box
@@ -318,9 +318,9 @@ final class GN_Age_Verify {
 
 			default :
 
-				if ( checkdate( (int) $_POST['av_verify_m'], (int) $_POST['av_verify_d'], (int) $_POST['av_verify_y'] ) ) :
+				if ( checkdate( (int) $_POST['gn_av_verify_m'], (int) $_POST['gn_av_verify_d'], (int) $_POST['gn_av_verify_y'] ) ) :
 
-					$age = av_get_visitor_age( $_POST['av_verify_y'], $_POST['av_verify_m'], $_POST['av_verify_d'] );
+					$age = av_get_visitor_age( $_POST['gn_av_verify_y'], $_POST['gn_av_verify_m'], $_POST['gn_av_verify_d'] );
 
 				    if ( $age >= av_get_minimum_age() )
 						$is_verified = true;
@@ -336,13 +336,13 @@ final class GN_Age_Verify {
 				break;
 		}
 
-		$is_verified = apply_filters( 'av_passed_verify', $is_verified );
+		$is_verified = apply_filters( 'gn_av_passed_verify', $is_verified );
 
 		if ( $is_verified == true ) :
 
-			do_action( 'av_was_verified' );
+			do_action( 'gn_av_was_verified' );
 
-			if ( isset( $_POST['av_verify_remember'] ) )
+			if ( isset( $_POST['gn_av_verify_remember'] ) )
 				$cookie_duration = time() +  ( av_get_cookie_duration() * 60 );
 			else
 				$cookie_duration = 0;
@@ -354,7 +354,7 @@ final class GN_Age_Verify {
 
 		else :
 
-			do_action( 'av_was_not_verified' );
+			do_action( 'gn_av_was_not_verified' );
 
 			wp_redirect( esc_url_raw( add_query_arg( 'verify-error', $error, $redirect_url ) ) );
 			exit;

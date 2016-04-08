@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @since 0.1
  */
-function av_settings_page() { ?>
+function gn_av_settings_page() { ?>
 
 	<div class="wrap">
 
@@ -43,7 +43,7 @@ function av_settings_page() { ?>
  *
  * @since 0.1
  */
-function av_settings_callback_section_general() {
+function gn_av_settings_callback_section_general() {
 
 	// Something should go here
 }
@@ -53,7 +53,7 @@ function av_settings_callback_section_general() {
  *
  * @since 0.2
  */
-function av_settings_callback_require_for_field() { ?>
+function gn_av_settings_callback_require_for_field() { ?>
 
 	<fieldset>
 		<legend class="screen-reader-text">
@@ -77,7 +77,7 @@ function av_settings_callback_require_for_field() { ?>
  *
  * @since 0.1
  */
-function av_settings_callback_always_verify_field() { ?>
+function gn_av_settings_callback_always_verify_field() { ?>
 
 	<fieldset>
 		<legend class="screen-reader-text">
@@ -101,7 +101,7 @@ function av_settings_callback_always_verify_field() { ?>
  *
  * @since 0.1
  */
-function av_settings_callback_minimum_age_field() { ?>
+function gn_av_settings_callback_minimum_age_field() { ?>
 
 	<input name="_gn_av_minimum_age" type="number" id="_gn_av_minimum_age" step="1" min="10" class="small-text" value="<?php echo esc_attr( get_option( '_gn_av_minimum_age', '21' ) ); ?>" /> <?php esc_html_e( 'years old or older to view this site', 'gn-age-verify' ); ?>
 
@@ -112,7 +112,7 @@ function av_settings_callback_minimum_age_field() { ?>
  *
  * @since 0.1
  */
-function av_settings_callback_cookie_duration_field() { ?>
+function gn_av_settings_callback_cookie_duration_field() { ?>
 
 	<input name="_gn_av_cookie_duration" type="number" id="_gn_av_cookie_duration" step="15" min="15" class="small-text" value="<?php echo esc_attr( get_option( '_gn_av_cookie_duration', '720' ) ); ?>" /> <?php esc_html_e( 'minutes', 'gn-age-verify' ); ?>
 
@@ -123,7 +123,7 @@ function av_settings_callback_cookie_duration_field() { ?>
  *
  * @since 0.1
  */
-function av_settings_callback_membership_field() { ?>
+function gn_av_settings_callback_membership_field() { ?>
 
 	<fieldset>
 		<legend class="screen-reader-text">
@@ -147,7 +147,7 @@ function av_settings_callback_membership_field() { ?>
  *
  * @since 0.1
  */
-function av_settings_callback_section_display() {
+function gn_av_settings_callback_section_display() {
 
 	echo '<p>' . esc_html__( 'These settings change the look of your overlay. You can use <code>%s</code> to display the minimum age number from the setting above.', 'gn-age-verify' ) . '</p>';
 }
@@ -157,7 +157,7 @@ function av_settings_callback_section_display() {
  *
  * @since 0.1
  */
-function av_settings_callback_heading_field() { ?>
+function gn_av_settings_callback_heading_field() { ?>
 
 	<input name="_gn_av_heading" type="text" id="_gn_av_heading" value="<?php echo esc_attr( get_option( '_gn_av_heading', __( 'You must be %s years old to visit this site.', 'gn-age-verify' ) ) ); ?>" class="regular-text" />
 
@@ -168,7 +168,7 @@ function av_settings_callback_heading_field() { ?>
  *
  * @since 0.1
  */
-function av_settings_callback_description_field() { ?>
+function gn_av_settings_callback_description_field() { ?>
 
 	<input name="_gn_av_description" type="text" id="_gn_av_description" value="<?php echo esc_attr( get_option( '_gn_av_description', __( 'Please verify your age', 'gn-age-verify' ) ) ); ?>" class="regular-text" />
 
@@ -179,7 +179,7 @@ function av_settings_callback_description_field() { ?>
  *
  * @since 0.1
  */
-function av_settings_callback_input_type_field() { ?>
+function gn_av_settings_callback_input_type_field() { ?>
 
 	<select name="_gn_av_input_type" id="_gn_av_input_type">
 		<option value="dropdowns" <?php selected( 'dropdowns', get_option( '_gn_av_input_type', 'dropdowns' ) ); ?>><?php esc_html_e( 'Date dropdowns', 'gn-age-verify' ); ?></option>
@@ -194,7 +194,7 @@ function av_settings_callback_input_type_field() { ?>
  *
  * @since 0.1
  */
-function av_settings_callback_styling_field() { ?>
+function gn_av_settings_callback_styling_field() { ?>
 
 	<fieldset>
 		<legend class="screen-reader-text">
@@ -213,7 +213,7 @@ function av_settings_callback_styling_field() { ?>
  *
  * @since 0.1
  */
-function av_settings_callback_overlay_color_field() { ?>
+function gn_av_settings_callback_overlay_color_field() { ?>
 
 	<fieldset>
 
@@ -234,7 +234,7 @@ function av_settings_callback_overlay_color_field() { ?>
  *
  * @since 0.1
  */
-function av_settings_callback_bgcolor_field() { ?>
+function gn_av_settings_callback_bgcolor_field() { ?>
 
 	<fieldset>
 
