@@ -430,7 +430,7 @@ function gn_av_get_verify_form() {
 
 	do_action( 'gn_av_form_after_inputs' );
 
-	$form .= '<p class="submit"><label for="gn_av_verify_remember"><input type="checkbox" name="gn_av_verify_remember" id="gn_av_verify_remember" value="1" /> ' . esc_html__( 'Remember me', 'gn-age-verify' ) . '</label> ';
+	$form .= '<p class="submit">';
 
 	$form .= '<input type="submit" name="gn_av_verify" id="gn_av_verify" value="' . esc_attr( $submit_button_label ) . '" /></p>';
 

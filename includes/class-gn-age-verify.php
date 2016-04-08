@@ -128,6 +128,9 @@ final class GN_Age_Verify {
 
 		}
 
+		// Add the userland JS
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+
 		// Maybe display the overlay.
 		add_action( 'wp_footer', array( $this, 'verify_overlay' ) );
 
@@ -189,6 +192,18 @@ final class GN_Age_Verify {
 	}
 
 	/**
+	 * Enqueue the scripts.
+	 *
+	 * @since 0.3.1
+	 *
+	 * @return void
+	 */
+	public function enqueue_scripts() {
+		wp_enqueue_script( 'gn-av-script', plugin_dir_url( __FILE__ ) . 'assets/gn-av.js', array('jquery') );
+	}
+
+
+	/**
 	 * Print the custom colors, as defined in the admin.
 	 *
 	 * @since 0.1.0
@@ -229,10 +244,9 @@ final class GN_Age_Verify {
 			return;
 		}
 
-		// Disable page caching by W3 Total Cache.
-		define( 'DONOTCACHEPAGE', true ); ?>
+		?>
 
-		<div id="gn-av-overlay-wrap">
+		<div id="gn-av-overlay-wrap" style="display:none;">
 
 			<?php do_action( 'gn_av_before_modal' ); ?>
 
@@ -342,14 +356,11 @@ final class GN_Age_Verify {
 
 			do_action( 'gn_av_was_verified' );
 
-			if ( isset( $_POST['gn_av_verify_remember'] ) )
-				$cookie_duration = time() +  ( gn_av_get_cookie_duration() * 60 );
-			else
-				$cookie_duration = 0;
+			$cookie_duration = time() +  ( gn_av_get_cookie_duration() * 60 );
 
 			setcookie( 'gn-age-verified', 1, $cookie_duration, COOKIEPATH, COOKIE_DOMAIN, false );
 
-			wp_redirect( esc_url_raw( $redirect_url ) . '?gn-age-verified=' . wp_create_nonce( 'gn-age-verified' ) );
+			wp_redirect( esc_url_raw( $redirect_url ) ); //. '?gn-age-verified=' . wp_create_nonce( 'gn-age-verified' ) );
 			exit;
 
 		else :
