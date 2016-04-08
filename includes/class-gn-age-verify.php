@@ -266,7 +266,7 @@ final class GN_Age_Verify {
 	 */
 	 public function restrict_content( $content ) {
 
-		if ( ! av_only_content_restricted() ) {
+		if ( ! gn_av_only_content_restricted() ) {
 			return $content;
 		}
 
@@ -274,7 +274,7 @@ final class GN_Age_Verify {
 			return $content;
 		}
 
-		if ( ! av_content_is_restricted() ) {
+		if ( ! gn_av_content_is_restricted() ) {
 			return $content;
 		}
 
