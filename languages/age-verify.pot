@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Age Verify 0.3.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/age-verify\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/gn-age-verify\n"
 "POT-Creation-Date: 2015-12-13 19:23:54+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -12,74 +12,74 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: includes/admin/class-age-verify-admin.php:54
-#: includes/admin/class-age-verify-admin.php:65
-#: includes/class-age-verify.php:61 includes/class-age-verify.php:72
+#: includes/admin/class-gn-age-verify-admin.php:54
+#: includes/admin/class-gn-age-verify-admin.php:65
+#: includes/class-gn-age-verify.php:61 includes/class-gn-age-verify.php:72
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: includes/admin/class-age-verify-admin.php:116
-#: includes/admin/class-age-verify-admin.php:117
+#: includes/admin/class-gn-age-verify-admin.php:116
+#: includes/admin/class-gn-age-verify-admin.php:117
 msgid "Age Verify"
 msgstr ""
 
-#: includes/admin/class-age-verify-admin.php:137 includes/admin/settings.php:56
+#: includes/admin/class-gn-age-verify-admin.php:137 includes/admin/settings.php:56
 msgid "Require verification for"
 msgstr ""
 
-#: includes/admin/class-age-verify-admin.php:141 includes/admin/settings.php:80
+#: includes/admin/class-gn-age-verify-admin.php:141 includes/admin/settings.php:80
 msgid "Verify the age of"
 msgstr ""
 
-#: includes/admin/class-age-verify-admin.php:145
+#: includes/admin/class-gn-age-verify-admin.php:145
 msgid "Visitors must be"
 msgstr ""
 
-#: includes/admin/class-age-verify-admin.php:149
+#: includes/admin/class-gn-age-verify-admin.php:149
 msgid "Remember visitors for"
 msgstr ""
 
-#: includes/admin/class-age-verify-admin.php:152
+#: includes/admin/class-gn-age-verify-admin.php:152
 #: includes/admin/settings.php:126
 msgid "Membership"
 msgstr ""
 
-#: includes/admin/class-age-verify-admin.php:156
+#: includes/admin/class-gn-age-verify-admin.php:156
 msgid "Display Options"
 msgstr ""
 
-#: includes/admin/class-age-verify-admin.php:159
+#: includes/admin/class-gn-age-verify-admin.php:159
 msgid "Overlay Heading"
 msgstr ""
 
-#: includes/admin/class-age-verify-admin.php:163
+#: includes/admin/class-gn-age-verify-admin.php:163
 msgid "Overlay Description"
 msgstr ""
 
-#: includes/admin/class-age-verify-admin.php:167
+#: includes/admin/class-gn-age-verify-admin.php:167
 msgid "Verify ages using"
 msgstr ""
 
-#: includes/admin/class-age-verify-admin.php:171
+#: includes/admin/class-gn-age-verify-admin.php:171
 #: includes/admin/settings.php:197
 msgid "Styling"
 msgstr ""
 
-#: includes/admin/class-age-verify-admin.php:175
+#: includes/admin/class-gn-age-verify-admin.php:175
 #: includes/admin/settings.php:217
 msgid "Overlay Color"
 msgstr ""
 
-#: includes/admin/class-age-verify-admin.php:179
+#: includes/admin/class-gn-age-verify-admin.php:179
 #: includes/admin/settings.php:238
 msgid "Background Color"
 msgstr ""
 
-#: includes/admin/class-age-verify-admin.php:197
+#: includes/admin/class-gn-age-verify-admin.php:197
 msgid "Settings"
 msgstr ""
 
-#: includes/admin/class-age-verify-admin.php:263
+#: includes/admin/class-gn-age-verify-admin.php:263
 msgid "Require age verification for this content"
 msgstr ""
 
@@ -127,7 +127,7 @@ msgstr ""
 msgid "You must be %s years old to visit this site."
 msgstr ""
 
-#: includes/admin/settings.php:169 includes/class-age-verify.php:281
+#: includes/admin/settings.php:169 includes/class-gn-age-verify.php:281
 #: includes/functions.php:259
 msgid "Please verify your age"
 msgstr ""
@@ -148,7 +148,7 @@ msgstr ""
 msgid "Use built-in CSS on the front-end (recommended)"
 msgstr ""
 
-#: includes/class-age-verify.php:281
+#: includes/class-gn-age-verify.php:281
 msgid "You must be %1s years old to view this content."
 msgstr ""
 

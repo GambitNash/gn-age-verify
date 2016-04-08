@@ -4,7 +4,7 @@
  *
  * @since 0.2.6
  *
- * @package Age_Verify
+ * @package GN_Age_Verify
  */
 
 // Don't allow this file to be accessed directly.
@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * @since 0.1.0
  */
-final class Age_Verify {
+final class GN_Age_Verify {
 
 	/**
 	 * The plugin version.
@@ -58,7 +58,7 @@ final class Age_Verify {
 	 * @return void
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'age-verify' ), self::VERSION );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'gn-age-verify' ), self::VERSION );
 	}
 
 	/**
@@ -69,7 +69,7 @@ final class Age_Verify {
 	 * @return void
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'age-verify' ), self::VERSION );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'gn-age-verify' ), self::VERSION );
 	}
 
 	/**
@@ -159,19 +159,19 @@ final class Age_Verify {
 	public function load_textdomain() {
 
 		$locale = get_locale();
-		$locale = apply_filters( 'plugin_locale',  $locale, 'age-verify' );
-		$mofile = sprintf( 'age-verify-%s.mo', $locale );
+		$locale = apply_filters( 'plugin_locale',  $locale, 'gn-age-verify' );
+		$mofile = sprintf( 'gn-age-verify-%s.mo', $locale );
 
 		$mofile_local  = plugin_dir_path( dirname( __FILE__ ) ) . 'languages/' . $mofile;
-		$mofile_global = WP_LANG_DIR . '/age-verify/' . $mofile;
+		$mofile_global = WP_LANG_DIR . '/gn-age-verify/' . $mofile;
 
 		if ( file_exists( $mofile_local ) )
-			return load_textdomain( 'age-verify', $mofile_local );
+			return load_textdomain( 'gn-age-verify', $mofile_local );
 
 		if ( file_exists( $mofile_global ) )
-			return load_textdomain( 'age-verify', $mofile_global );
+			return load_textdomain( 'gn-age-verify', $mofile_global );
 
-		load_plugin_textdomain( 'age-verify' );
+		load_plugin_textdomain( 'gn-age-verify' );
 
 		return false;
 	}
@@ -278,7 +278,7 @@ final class Age_Verify {
 			return $content;
 		}
 
-		return sprintf( apply_filters( 'av_restricted_content_message', __( 'You must be %1s years old to view this content.', 'age-verify' ) . ' <a href="%2s">' . __( 'Please verify your age', 'age-verify' ) . '</a>.' ),
+		return sprintf( apply_filters( 'av_restricted_content_message', __( 'You must be %1s years old to view this content.', 'gn-age-verify' ) . ' <a href="%2s">' . __( 'Please verify your age', 'gn-age-verify' ) . '</a>.' ),
 			esc_html( av_get_minimum_age() ),
 			esc_url( get_permalink( get_the_ID() ) )
 		);

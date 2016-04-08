@@ -15,7 +15,7 @@ Whatever your reasons, you may need your site's visitors to confirm their age be
 
 == Installation ==
 
-1. Upload the 'age-verify' folder to the '/wp-content/plugins/' directory
+1. Upload the 'gn-age-verify' folder to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Visit 'Settings > Age Verify' and adjust your configuration.
 
@@ -28,7 +28,7 @@ Whatever your reasons, you may need your site's visitors to confirm their age be
 
 = 0.3.0 =
 * New: French and Italian translations
-* Tweak: Use strings for the textdomain and change to 'age-verify'
+* Tweak: Use strings for the textdomain and change to 'gn-age-verify'
 
 = 0.2.10 =
 * Fix: cookie duration now uses the corresponding setting
