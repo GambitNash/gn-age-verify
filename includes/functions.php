@@ -22,7 +22,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function gn_av_minimum_age() {
 
-	echo av_get_minimum_age();
+	echo gn_av_get_minimum_age();
 }
 
 /**
@@ -222,7 +222,7 @@ function gn_av_needs_verification() {
  */
 function gn_av_the_heading() {
 
-	echo av_get_the_heading();
+	echo gn_av_get_the_heading();
 }
 
 /**
@@ -244,7 +244,7 @@ function gn_av_get_the_heading() {
  */
 function gn_av_the_desc() {
 
-	echo av_get_the_desc();
+	echo gn_av_get_the_desc();
 }
 
 /**
@@ -323,7 +323,7 @@ function gn_av_get_background_color() {
  */
 function gn_av_verify_form() {
 
-	echo av_get_verify_form();
+	echo gn_av_get_verify_form();
 }
 
 /**
